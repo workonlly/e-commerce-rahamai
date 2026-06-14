@@ -2,45 +2,44 @@ import React from "react";
 
 export default function WhoWeAre() {
   return (
-    <section className="relative w-full px-4 py-20 md:px-8 lg:py-32">
-      <div className="mx-auto max-w-6xl">
+    <section className="w-full bg-[#FAF9F6] px-6 py-24 md:px-12 lg:py-32 flex justify-center">
+      <div className="max-w-4xl text-center">
         
-        {/* Top Badge */}
-        <div className="mb-8 md:mb-12">
-          <span className="inline-block rounded-full border border-gray-200/80 bg-transparent px-4 py-2 text-[11px] font-semibold tracking-[0.2em] text-gray-600 uppercase">
-            Who we are
+        {/* Minimalist Ethnic Badge */}
+        <div className="mb-12 flex justify-center">
+          <span className="inline-block border-b border-[#3E3228]/30 pb-2 text-[11px] font-medium tracking-[0.3em] text-[#3E3228] uppercase">
+            Our Heritage
           </span>
         </div>
 
         {/* 
-          Large Inline Image Typography 
-          Uses relative units (em) for the inline images so they scale 
-          perfectly with the text size across different screen widths.
+          Elegant Serif Typography 
+          Uses text-balance for a poetic, centered reading flow
         */}
-        <h2 className="text-[2.5rem] font-medium leading-[1.15] tracking-tight text-[#1a1a1a] sm:text-5xl md:text-6xl lg:text-[5.5rem]">
-          For players picking up their first racket to{" "}
+        <h2 className="font-serif text-[1.75rem] leading-[1.6] text-[#3E3228] sm:text-3xl md:text-4xl lg:text-[3.25rem] lg:leading-[1.4] text-balance">
+          From the intricate threads of our first weave{" "}
           
-          {/* Inline Image 1 (Racket/Court) */}
-          <span className="mx-1 inline-block h-[0.9em] w-[2.2em] -translate-y-[0.1em] align-middle overflow-hidden rounded-full shadow-sm">
+          {/* Inline Image 1 (Fabric/Embroidery) */}
+          <span className="mx-2 inline-block h-[0.85em] w-[1.8em] -translate-y-[0.1em] align-middle overflow-hidden rounded-sm shadow-sm transition-transform duration-500 hover:scale-105">
             <img
-              src="https://images.unsplash.com/photo-1622225369205-2710bcfa0e55?q=80&w=600&auto=format&fit=crop"
-              alt="Padel court details"
-              className="h-full w-full object-cover"
+              src="https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?q=80&w=600&auto=format&fit=crop"
+              alt="Intricate woven fabric"
+              className="h-full w-full object-cover sepia-[20%]"
             />
           </span>{" "}
           
-          chasing the perfect shot, we elevate every aspect of the experience{" "}
+          to the timeless elegance of the perfect drape, we celebrate every detail{" "}
           
-          {/* Inline Image 2 (Tennis/Padel Balls) */}
-          <span className="mx-1 inline-block h-[0.9em] w-[2.2em] -translate-y-[0.1em] align-middle overflow-hidden rounded-full shadow-sm">
+          {/* Inline Image 2 (Saree/Ethnic Motif) */}
+          <span className="mx-2 inline-block h-[0.85em] w-[1.8em] -translate-y-[0.1em] align-middle overflow-hidden rounded-sm shadow-sm transition-transform duration-500 hover:scale-105">
             <img
-              src="https://images.unsplash.com/photo-1587384474964-3a06ce1ce699?q=80&w=600&auto=format&fit=crop"
-              alt="Pile of padel balls"
-              className="h-full w-full object-cover"
+              src="https://images.unsplash.com/photo-1583391733958-650bac0bdf2a?q=80&w=600&auto=format&fit=crop"
+              alt="Ethnic wear details"
+              className="h-full w-full object-cover sepia-[20%]"
             />
           </span>{" "}
           
-          to make you fall in love with the game again and again.
+          to make you fall in love with our traditions all over again.
         </h2>
         
       </div>

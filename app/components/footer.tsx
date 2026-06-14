@@ -2,85 +2,73 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-black/10 bg-transparent">
+    <footer className="w-full border-t border-[#3E3228]/15 bg-[#FAF9F6]">
       
       {/* Top Section: 4-Column Grid with Vertical Dividers */}
-      <div className="grid grid-cols-1 divide-y divide-black/10 md:grid-cols-4 md:divide-x md:divide-y-0 md:divide-black/10">
+      <div className="grid grid-cols-1 divide-y divide-[#3E3228]/10 md:grid-cols-4 md:divide-x md:divide-y-0">
         
         {/* Column 1: Branding & Description */}
-        <div className="px-6 py-16 md:px-8 lg:px-10">
+        <div className="px-6 py-16 md:px-8 lg:px-12">
           {/* Logo */}
-          <a href="/" className="mb-6 flex items-center gap-2 text-[#2c4c1f]">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              <path d="M8 11h8" />
-              <path d="M12 11v6" />
-            </svg>
-            <span className="text-xl font-bold tracking-tight" style={{ fontFamily: "serif" }}>
-              PadelthonClub
-            </span>
+          <a href="/" className="mb-6 flex items-center hover:opacity-80 transition-opacity">
+            {/* Assuming you want to use the Rahamai image logo here */}
+            <img src="/rahamai.png" alt="Rahamai Logo" className="h-10 object-contain" />
           </a>
           
-          <p className="text-[14px] leading-relaxed text-gray-500">
-            Whether you’re here to compete, improve, or just have fun, you’ll
-            find players who push you, cheer for you, and maybe even share
-            a drink with you after the game.
+          <p className="text-[14px] font-light leading-relaxed text-[#5A4A3C] mt-6">
+            From the intricate threads of our first weave to the timeless elegance of the perfect drape, we celebrate every detail of our rich heritage.
           </p>
         </div>
 
-        {/* Column 2: Empty Spacer (Visible on medium+ screens) */}
-        <div className="hidden md:block"></div>
-
-        {/* Column 3: Main Pages */}
-        <div className="px-6 py-16 md:px-8 lg:px-10">
-          <h3 className="mb-8 text-[11px] font-semibold tracking-[0.2em] text-gray-400 uppercase">
-            Main Pages
+        {/* Column 2: Shop */}
+        <div className="px-6 py-16 md:px-8 lg:px-12">
+          <h3 className="mb-8 font-serif text-[13px] font-semibold tracking-[0.15em] text-[#3E3228] uppercase">
+            Shop
           </h3>
-          <ul className="flex flex-col gap-4 text-[15px] text-gray-700">
-            <li><a href="/" className="hover:text-black transition-colors">Home</a></li>
-            <li><a href="/services" className="hover:text-black transition-colors">Services</a></li>
-            <li><a href="/store" className="hover:text-black transition-colors">Store</a></li>
-            <li><a href="/event" className="hover:text-black transition-colors">Event</a></li>
-            <li><a href="/contact" className="hover:text-black transition-colors">Contact</a></li>
-            <li><a href="/about" className="hover:text-black transition-colors">About</a></li>
+          <ul className="flex flex-col gap-4 text-[14px] font-light text-[#5A4A3C]">
+            <li><a href="/shop/women" className="hover:text-[#e7a026] transition-colors">Women</a></li>
+            <li><a href="/shop/men" className="hover:text-[#e7a026] transition-colors">Men</a></li>
+            <li><a href="/shop/kids" className="hover:text-[#e7a026] transition-colors">Kids</a></li>
+            <li><a href="/collections" className="hover:text-[#e7a026] transition-colors">New Arrivals</a></li>
           </ul>
         </div>
 
-        {/* Column 4: Social Media & Utility */}
-        <div className="flex justify-between px-6 py-16 md:px-8 lg:px-10">
+        {/* Column 3: Explore */}
+        <div className="px-6 py-16 md:px-8 lg:px-12">
+          <h3 className="mb-8 font-serif text-[13px] font-semibold tracking-[0.15em] text-[#3E3228] uppercase">
+            Explore
+          </h3>
+          <ul className="flex flex-col gap-4 text-[14px] font-light text-[#5A4A3C]">
+            <li><a href="/aboutus" className="hover:text-[#e7a026] transition-colors">Our Story</a></li>
+            <li><a href="/contact" className="hover:text-[#e7a026] transition-colors">Contact Us</a></li>
+            <li><a href="/faqs" className="hover:text-[#e7a026] transition-colors">FAQs</a></li>
+            <li><a href="/store" className="hover:text-[#e7a026] transition-colors">Store Locator</a></li>
+          </ul>
+        </div>
+
+        {/* Column 4: Legal & Social */}
+        <div className="flex flex-col justify-between px-6 py-16 md:px-8 lg:px-12">
           
           {/* Social Links */}
           <div>
-            <h3 className="mb-8 text-[11px] font-semibold tracking-[0.2em] text-gray-400 uppercase">
-              Social Media
+            <h3 className="mb-8 font-serif text-[13px] font-semibold tracking-[0.15em] text-[#3E3228] uppercase">
+              Follow Us
             </h3>
-            <ul className="flex flex-col gap-4 text-[15px] text-gray-700">
-              <li><a href="#" className="hover:text-black transition-colors">Instagram</a></li>
-              <li><a href="#" className="hover:text-black transition-colors">X / Twitter</a></li>
-              <li><a href="#" className="hover:text-black transition-colors">Facebook</a></li>
-              <li><a href="#" className="hover:text-black transition-colors">Pinterest</a></li>
-              <li><a href="#" className="hover:text-black transition-colors">Linkedin</a></li>
+            <ul className="flex flex-col gap-4 text-[14px] font-light text-[#5A4A3C]">
+              <li><a href="#" className="hover:text-[#e7a026] transition-colors">Instagram</a></li>
+              <li><a href="#" className="hover:text-[#e7a026] transition-colors">Facebook</a></li>
+              <li><a href="#" className="hover:text-[#e7a026] transition-colors">Pinterest</a></li>
             </ul>
           </div>
 
           {/* Utility Links */}
-          <div className="text-right">
-            <h3 className="mb-8 text-[11px] font-semibold tracking-[0.2em] text-gray-400 uppercase">
-              Utility
+          <div className="mt-12 md:mt-0">
+            <h3 className="mb-8 font-serif text-[13px] font-semibold tracking-[0.15em] text-[#3E3228] uppercase">
+              Legal
             </h3>
-            <ul className="flex flex-col gap-4 text-[15px] text-gray-700">
-              <li><a href="/license" className="hover:text-black transition-colors">License</a></li>
-              <li><a href="/style-guide" className="hover:text-black transition-colors">Style Guide</a></li>
-              <li><a href="/changelog" className="hover:text-black transition-colors">Changelog</a></li>
+            <ul className="flex flex-col gap-4 text-[14px] font-light text-[#5A4A3C]">
+              <li><a href="/privacy" className="hover:text-[#e7a026] transition-colors">Privacy Policy</a></li>
+              <li><a href="/termsandcondition" className="hover:text-[#e7a026] transition-colors">Terms & Conditions</a></li>
             </ul>
           </div>
           
@@ -88,12 +76,12 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar Section */}
-      <div className="flex flex-col items-center justify-between gap-4 border-t border-black/10 px-6 py-6 text-[13px] text-gray-500 md:flex-row md:px-8 lg:px-10">
-        <p>
-          Developed by <span className="font-medium text-[#2c4c1f]">Pylos Studio</span> & Powered by <span className="font-medium text-[#2c4c1f]">Webflow</span>
+      <div className="flex flex-col items-center justify-between gap-4 border-t border-[#3E3228]/10 px-6 py-8 text-[12px] font-light text-[#5A4A3C] md:flex-row md:px-8 lg:px-12">
+        <p className="tracking-wide">
+          © 2026 Rahamai. All rights reserved.
         </p>
-        <p>
-          ©2025 Pylos Studio® All rights reserved.
+        <p className="tracking-wide">
+          Crafted with elegance.
         </p>
       </div>
       

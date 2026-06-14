@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, ChevronUp, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 
 // Mock data based on the provided image
 const faqData = [
@@ -32,8 +32,6 @@ const faqData = [
 ];
 
 export default function FaqSection() {
-  // Set to 0 to have the first item open by default, mimicking the image.
-  // Set to null if you want all of them closed initially.
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleFaq = (index: number) => {
@@ -41,65 +39,69 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="mx-auto w-full max-w-5xl px-4 py-16 md:px-8">
-      
-      {/* Header Section */}
-      <div className="mb-10 flex items-end justify-between border-b border-white pb-2">
-        <h2 className="text-3xl font-light uppercase tracking-wide text-black sm:text-4xl md:text-[40px]">
-          Know Before You Go
-        </h2>
-        <a 
-          href="/faqs" 
-          className="flex items-center gap-1 pb-1 text-sm font-medium text-black transition-opacity hover:opacity-70"
-        >
-          More FAQs 
-          <ChevronRight size={16} strokeWidth={1.5} />
-        </a>
-      </div>
+    <section className="w-full bg-[#FAF9F6] px-6 py-20 md:px-12 lg:py-32">
+      <div className="mx-auto max-w-4xl">
+        
+        {/* Header Section */}
+        <div className="mb-12 flex items-end justify-between border-b border-[#3E3228]/20 pb-6">
+          <h2 className="font-serif text-3xl font-normal tracking-wide text-[#3E3228] sm:text-4xl md:text-5xl">
+            Know Before You Go
+          </h2>
+          <a 
+            href="/faqs" 
+            className="group flex items-center gap-2 pb-1 text-[11px] font-medium tracking-[0.2em] text-[#3E3228] uppercase transition-opacity hover:opacity-70"
+          >
+            More FAQs 
+            <ArrowRight size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </div>
 
-      {/* Accordion List */}
-      <div className="flex flex-col">
-        {faqData.map((faq, index) => {
-          const isOpen = openIndex === index;
+        {/* Accordion List */}
+        <div className="flex flex-col">
+          {faqData.map((faq, index) => {
+            const isOpen = openIndex === index;
 
-          return (
-            <div 
-              key={index} 
-              className="border-b border-gray-200"
-            >
-              <button
-                onClick={() => toggleFaq(index)}
-                className="flex w-full items-center justify-between py-6 text-left transition-colors hover:text-gray-600 focus:outline-none"
+            return (
+              <div 
+                key={index} 
+                className="border-b border-[#3E3228]/15"
               >
-                <span className="text-[17px] font-medium text-gray-900">
-                  {faq.question}
-                </span>
-                
-                {/* Thin Chevron Icon to match the image styling */}
-                {isOpen ? (
-                  <ChevronUp size={20} strokeWidth={1} className="text-gray-900" />
-                ) : (
-                  <ChevronDown size={20} strokeWidth={1} className="text-gray-900" />
-                )}
-              </button>
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="group flex w-full items-center justify-between py-6 text-left transition-colors focus:outline-none"
+                >
+                  <span className={`font-serif text-lg transition-colors duration-300 md:text-[22px] ${isOpen ? 'text-[#3E3228]' : 'text-[#3E3228]/80 group-hover:text-[#3E3228]'}`}>
+                    {faq.question}
+                  </span>
+                  
+                  {/* Thin Chevron Icon */}
+                  <div className="ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-transparent transition-colors duration-300 group-hover:border-[#3E3228]/10">
+                    {isOpen ? (
+                      <ChevronUp size={20} strokeWidth={1} className="text-[#3E3228]" />
+                    ) : (
+                      <ChevronDown size={20} strokeWidth={1} className="text-[#3E3228]/70 group-hover:text-[#3E3228]" />
+                    )}
+                  </div>
+                </button>
 
-              {/* Expandable Answer Area */}
-              <div
-                className={`grid transition-all duration-300 ease-in-out ${
-                  isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                }`}
-              >
-                <div className="overflow-hidden">
-                  <p className="pb-6 pr-8 text-sm font-normal leading-relaxed text-gray-500">
-                    {faq.answer}
-                  </p>
+                {/* Expandable Answer Area */}
+                <div
+                  className={`grid transition-all duration-500 ease-in-out ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="pb-8 pr-8 text-sm md:text-base font-light leading-relaxed text-[#5A4A3C]">
+                      {faq.answer}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
+        
       </div>
-      
     </section>
   );
 }

@@ -1,52 +1,50 @@
-'use client';
+"use client";
+
 import React, { useState } from "react";
 
 const categories = [
   "ALL",
   "DRESSES",
-  "BRIDAL",
   "BLOUSES & KNITS",
   "PANTS & SKIRTS",
-  "JACKETS",
-  "T-SHIRTS & TOPS",
+  "BRIDAL",
 ];
 
 const products = [
   {
     id: 1,
+    badge: "SALE",
     category: "Dresses",
-    name: "PLEATED EMERALD MIDI DRESS",
+    title: "PLEATED EMERALD MIDI DRESS",
     price: "$ 1,754.00 USD",
-    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=600&auto=format&fit=crop",
-    isSale: false,
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=600&auto=format&fit=crop",
   },
   {
     id: 2,
-    category: "Dresses",
-    name: "CHIFFON MIDI DRESS IN DEEP BURG...",
-    price: "$ 2,289.35 USD",
-    image: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?q=80&w=600&auto=format&fit=crop",
-    isSale: false,
+    badge: "NEW",
+    category: "Blouses & Knits",
+    title: "SEQUIN DETAIL EMBELLISH CARDIGAN",
+    price: "$ 889.00 USD",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop",
   },
   {
     id: 3,
-    category: "Dresses",
-    name: "SATIN MAXI DRESS IN DEEP PLUM",
-    price: "$ 899.00 USD",
-    image: "https://images.unsplash.com/photo-1572804013309-8c98e10f1ba4?q=80&w=600&auto=format&fit=crop",
-    isSale: true,
+    category: "Pants & Skirts",
+    title: "SILK BLEND DRAWSTRING PANT",
+    price: "$ 1,924.69 USD",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    image: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?q=80&w=1000&auto=format&fit=crop",
   },
   {
     id: 4,
-    category: "Dresses",
-    name: "VELVET MIDI DRESS IN DEEP EMERALD",
-    price: "$ 2,619.07 USD",
-    image: "https://images.unsplash.com/photo-1612336307429-8a898d10e223?q=80&w=600&auto=format&fit=crop",
-    isSale: true,
+    badge: "SALE",
+    category: "Pants & Skirts",
+    title: "LINEN BLEND DRAWSTRING PANT",
+    price: "$ 2,685.12 USD",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1000&auto=format&fit=crop",
   },
 ];
 
@@ -58,93 +56,108 @@ export default function StoreGrid() {
     setSelectedSizes((prev) => ({ ...prev, [productId]: size }));
   };
 
-  return (
-    <div className="min-h-screen bg-white text-gray-200 py-16 px-4 md:px-8 font-sans overflow-hidden relative">
-      
-      {/* Background Ambient Glows */}
-      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-[400px] w-[800px] rounded-full bg-cyan-600/5 blur-[120px]" />
+  // Filter products based on active category tab
+  const filteredProducts = activeCategory === "ALL" 
+    ? products 
+    : products.filter(p => p.category.toUpperCase() === activeCategory);
 
-      <div className="mx-auto max-w-7xl relative z-10">
+  return (
+    <section className="min-h-screen bg-[#FAF9F6] text-[#3E3228] py-16 px-6 md:px-12 font-sans">
+      <div className="max-w-7xl mx-auto">
         
+        {/* Header Area */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-[#3E3228]/10 pb-6">
+          <h2 className="font-serif text-3xl md:text-4xl font-normal tracking-wide text-[#3E3228]">
+            Curated Collections
+          </h2>
+          <a href="/shop" className="text-xs font-semibold uppercase tracking-[0.2em] hover:text-[#e7a026] transition-colors flex items-center gap-1">
+            View All <span className="text-[10px]">&gt;</span>
+          </a>
+        </div>
+
         {/* Category Navigation */}
-        <nav className="mb-16 flex flex-wrap justify-center gap-6 md:gap-10 border-b border-white/[0.05] pb-4">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`pb-4 text-xs md:text-sm font-semibold tracking-[0.15em] transition-all relative
-                ${activeCategory === category ? "text-cyan-400" : "text-gray-500 hover:text-gray-300"}
-              `}
-            >
-              {category}
-              {activeCategory === category && (
-                <span className="absolute bottom-[-1px] left-0 w-full h-[2px] bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
-              )}
-            </button>
-          ))}
+        <nav className="mb-12 flex flex-wrap gap-6 md:gap-10">
+          {categories.map((category) => {
+            const isActive = activeCategory === category;
+            return (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`pb-1 text-[11px] font-bold tracking-[0.15em] uppercase transition-all duration-300 relative
+                  ${isActive ? "text-[#3E3228]" : "text-[#5A4A3C]/60 hover:text-[#3E3228]"}
+                `}
+              >
+                {category}
+                {/* Active Indicator Underline */}
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#e7a026]" />
+                )}
+              </button>
+            );
+          })}
         </nav>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {products.map((product) => (
-            <div key={product.id} className="group flex flex-col">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+          {filteredProducts.map((product) => (
+            <div key={product.id} className="group flex flex-col h-full">
               
               {/* Image Container */}
-              <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-white/[0.02] border border-white/[0.05] mb-6">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="h-full w-full object-cover grayscale-[20%] transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0"
-                />
-                
-                {/* Sale Badge */}
-                {product.isSale && (
-                  <span className="absolute top-4 left-4 rounded-full border border-fuchsia-500/30 bg-black/60 backdrop-blur-md px-3 py-1 text-[10px] font-bold tracking-[0.2em] text-fuchsia-400 uppercase shadow-[0_0_10px_rgba(217,70,239,0.2)]">
-                    Sale
-                  </span>
+              <div className="relative w-full aspect-[4/5] bg-[#EAE7E0] overflow-hidden mb-5">
+                {/* Badge */}
+                {product.badge && (
+                  <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1.5 text-[9px] font-bold tracking-[0.2em] text-[#3E3228] z-10 shadow-sm uppercase">
+                    {product.badge}
+                  </div>
                 )}
                 
-                {/* Dark Overlay Gradient for better integration */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#09090b]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Image */}
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 sepia-[10%]"
+                />
               </div>
 
               {/* Product Info */}
-              <div className="flex-1 flex flex-col">
-                <span className="text-gray-500 text-[11px] uppercase tracking-wider mb-2 font-mono">
+              <div className="flex flex-col flex-grow">
+                <span className="text-[10px] text-[#5A4A3C] uppercase tracking-widest mb-1.5">
                   {product.category}
                 </span>
-                <h3 className="text-sm font-semibold text-gray-100 tracking-wide mb-2 line-clamp-1">
-                  {product.name}
+                <h3 className="font-serif text-base font-medium text-[#3E3228] mb-1 line-clamp-1">
+                  {product.title}
                 </h3>
-                <p className="text-cyan-400 font-mono text-sm mb-6">
+                <p className="text-[13px] font-light text-[#5A4A3C] mb-5">
                   {product.price}
                 </p>
 
-                {/* Size Selector */}
-                <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-                  {product.sizes.map((size) => {
-                    const isSelected = selectedSizes[product.id] === size;
-                    return (
-                      <button
-                        key={size}
-                        onClick={() => handleSizeSelect(product.id, size)}
-                        className={`w-8 h-8 rounded-md flex items-center justify-center text-[10px] font-mono transition-all duration-300
-                          ${isSelected 
-                            ? "bg-cyan-500/10 border-cyan-400 text-cyan-300 shadow-[0_0_10px_rgba(34,211,238,0.2)]" 
-                            : "bg-transparent border border-white/10 text-gray-400 hover:border-white/30 hover:text-gray-200"
-                          }
-                        `}
-                      >
-                        {size}
-                      </button>
-                    );
-                  })}
-                </div>
+                <div className="mt-auto">
+                  {/* Size Selector */}
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {product.sizes.map((size) => {
+                      const isSelected = selectedSizes[product.id] === size;
+                      return (
+                        <button
+                          key={size}
+                          onClick={() => handleSizeSelect(product.id, size)}
+                          className={`w-8 h-8 flex items-center justify-center text-[10px] transition-colors duration-300
+                            ${isSelected 
+                              ? "bg-[#3E3228] border-[#3E3228] text-white" 
+                              : "border border-[#3E3228]/15 text-[#5A4A3C] hover:border-[#3E3228] hover:text-[#3E3228] bg-transparent"
+                            }
+                          `}
+                        >
+                          {size}
+                        </button>
+                      );
+                    })}
+                  </div>
 
-                {/* Add to Cart Button */}
-                <button className="w-full py-3.5 rounded-lg bg-white/[0.03] border border-white/[0.05] text-xs font-bold tracking-[0.2em] uppercase text-gray-300 hover:bg-white hover:text-black transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-                  Add to Cart
-                </button>
+                  {/* Add to Cart Button */}
+                  <button className="w-full bg-transparent border border-[#3E3228] text-[#3E3228] py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-[#3E3228] hover:text-white transition-all duration-300">
+                    Add to Cart
+                  </button>
+                </div>
               </div>
               
             </div>
@@ -152,6 +165,6 @@ export default function StoreGrid() {
         </div>
 
       </div>
-    </div>
+    </section>
   );
 }
