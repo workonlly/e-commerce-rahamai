@@ -37,11 +37,19 @@ export default function Hero() {
         `}
       </style>
 
-      {/* Background Image (Placeholder) */}
+      {/* Background Images */}
+      {/* Desktop Banner */}
       <img
         src="/banner/banner.png"
         alt="Hero Banner"
-        className="absolute inset-0 w-full h-full object-cover object-top"
+        className="hidden md:block absolute inset-0 w-full h-full object-cover object-top"
+        style={{ filter: 'brightness(1.1)' }}
+      />
+      {/* Mobile Banner */}
+      <img
+        src="/banner/moblilebanner.png"
+        alt="Hero Banner Mobile"
+        className="block md:hidden absolute inset-0 w-full h-full object-cover object-top"
         style={{ filter: 'brightness(1.1)' }}
       />
 
